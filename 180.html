@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>180° Healthy Meals — Start Your Journey</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F4F9F0;--bg2:#FAFCF7;--card:#FFFFFF;--card2:#EEF5E8;
+  --green:#2D7A3A;--green-light:#3A9E4A;--green-soft:#4CAF50;--green-pale:#E8F5E9;--green-glow:rgba(45,122,58,0.08);
+  --dark:#1B3D20;--dark2:#2E5E35;
+  --gold:#C5A94E;--gold-soft:rgba(197,169,78,0.1);
+  --cream:#FDFFF9;--white:#FFFFFF;
+  --text:#1B3D20;--text2:#4A7C54;--text3:#8BAF8F;
+  --border:rgba(45,122,58,0.1);
+  --radius:16px;--radius-sm:10px;
+}
+body{
+  font-family:'Outfit','Noto Sans Arabic',sans-serif;
+  background:var(--bg);min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:16px;overflow:hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 30% 0%,rgba(76,175,80,0.06),transparent),
+    radial-gradient(ellipse 50% 40% at 80% 100%,rgba(139,175,143,0.05),transparent);
+}
+.phone{
+  width:100%;max-width:440px;height:90vh;max-height:820px;
+  background:var(--bg2);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 0 0 1px var(--border),0 12px 40px rgba(27,61,32,0.08),0 0 80px rgba(76,175,80,0.04);
+}
+.hdr{
+  padding:20px 20px 16px;display:flex;align-items:center;gap:14px;
+  background:var(--white);
+  border-bottom:1px solid var(--border);z-index:10;
+}
+.logo{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green),var(--green-light));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 2.5px rgba(45,122,58,0.15),0 4px 12px rgba(45,122,58,0.1);
+  flex-shrink:0;position:relative;
+}
+.logo::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(197,169,78,0.3)}
+.logo span{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--white);letter-spacing:-0.5px}
+.hdr-info{flex:1}
+.hdr-name{font-family:'Playfair Display',serif;color:var(--dark);font-size:17px;font-weight:600}
+.hdr-sub{color:var(--green);font-size:12px;font-weight:500;margin-top:2px;display:flex;align-items:center;gap:6px}
+.hdr-dot{width:6px;height:6px;border-radius:50%;background:var(--green-soft);animation:glow 2.5s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:1;box-shadow:0 0 6px rgba(76,175,80,0.4)}50%{opacity:0.4;box-shadow:none}}
+
+.chat{flex:1;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:6px;scroll-behavior:smooth;background:var(--bg)}
+.chat::-webkit-scrollbar{width:3px}.chat::-webkit-scrollbar-thumb{background:rgba(45,122,58,0.15);border-radius:4px}
+
+.msg{max-width:82%;padding:12px 16px;font-size:14.5px;line-height:1.6;color:var(--text);animation:si 0.4s cubic-bezier(0.16,1,0.3,1);word-wrap:break-word}
+.msg b{color:var(--green)}
+.msg.rtl{direction:rtl;text-align:right;font-family:'Noto Sans Arabic','Outfit',sans-serif}
+@keyframes si{from{opacity:0;transform:translateY(12px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.msg.in{align-self:flex-start;background:var(--white);border-radius:2px var(--radius) var(--radius) var(--radius);border:1px solid var(--border);box-shadow:0 1px 4px rgba(27,61,32,0.04)}
+.msg.out{align-self:flex-end;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:var(--radius) 2px var(--radius) var(--radius);color:var(--white);box-shadow:0 2px 8px rgba(45,122,58,0.15)}
+.msg .time{font-size:10px;color:var(--text3);text-align:right;margin-top:6px}.msg.out .time{color:rgba(255,255,255,0.5)}
+
+.typing{display:flex;gap:5px;padding:14px 18px;align-self:flex-start;background:var(--white);border-radius:2px var(--radius) var(--radius) var(--radius);border:1px solid var(--border);animation:si 0.3s cubic-bezier(0.16,1,0.3,1)}
+.td{width:6px;height:6px;border-radius:50%;background:var(--green-soft);animation:bn 1.4s infinite}.td:nth-child(2){animation-delay:.15s}.td:nth-child(3){animation-delay:.3s}
+@keyframes bn{0%,60%,100%{transform:translateY(0);opacity:0.3}30%{transform:translateY(-8px);opacity:1}}
+
+.opts{display:flex;flex-direction:column;gap:8px;max-width:85%;align-self:flex-start;animation:si 0.4s cubic-bezier(0.16,1,0.3,1)}.opts.rtl{direction:rtl}
+.opt{
+  background:var(--white);border:1.5px solid var(--border);color:var(--green);
+  padding:13px 18px;border-radius:var(--radius-sm);font-size:14.5px;
+  font-family:'Outfit','Noto Sans Arabic',sans-serif;font-weight:500;
+  cursor:pointer;transition:all 0.25s cubic-bezier(0.16,1,0.3,1);text-align:left;
+  position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;
+  box-shadow:0 1px 3px rgba(27,61,32,0.04);
+}
+.opt.rtl{text-align:right;direction:rtl;font-family:'Noto Sans Arabic','Outfit',sans-serif;flex-direction:row-reverse}
+.opt:hover{border-color:var(--green);background:var(--green-pale);color:var(--dark);transform:translateY(-2px);box-shadow:0 4px 16px rgba(45,122,58,0.1)}
+.opt:active{transform:translateY(0)}
+.opt-icon{font-size:18px;flex-shrink:0}.opt-text{}
+
+.inarea{padding:12px 16px 16px;display:flex;align-items:center;gap:10px;background:var(--white);border-top:1px solid var(--border)}
+.tinput{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:12px 18px;color:var(--text);font-size:14.5px;font-family:'Outfit',sans-serif;outline:none;transition:border-color 0.2s}
+.tinput:focus{border-color:var(--green)}.tinput::placeholder{color:var(--text3)}.tinput:disabled{opacity:0.3;cursor:not-allowed}
+.tinput.rtl{direction:rtl;text-align:right;font-family:'Noto Sans Arabic','Outfit',sans-serif}
+.sbtn{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--green-light));border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.25s;flex-shrink:0;box-shadow:0 2px 8px rgba(45,122,58,0.2)}
+.sbtn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(45,122,58,0.25)}.sbtn:disabled{opacity:0.3;cursor:not-allowed;transform:none;box-shadow:none}
+.sbtn svg{width:18px;height:18px;fill:var(--white)}
+
+.divider{text-align:center;margin:10px 0;animation:si 0.3s ease}.divider span{background:var(--white);color:var(--text3);font-size:11px;padding:5px 14px;border-radius:20px;border:1px solid var(--border)}
+
+.done{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;max-width:85%;align-self:flex-start;animation:si 0.5s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(27,61,32,0.06)}
+.done::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green-soft),var(--gold),var(--green-soft))}
+.done.rtl{direction:rtl;text-align:right}
+.done-icon{font-size:32px;margin-bottom:12px;display:block}
+.done h3{font-family:'Playfair Display',serif;color:var(--dark);font-size:18px;margin-bottom:10px;font-weight:600}
+.done p{color:var(--text2);font-size:13.5px;line-height:1.7}
+.done-contact{margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.done-contact a{display:flex;align-items:center;gap:8px;color:var(--green);font-size:13px;text-decoration:none;margin-bottom:8px;transition:color 0.2s}.done-contact a:hover{color:var(--dark)}.done-contact a span{font-size:16px}
+
+.hero{max-width:85%;align-self:flex-start;animation:si 0.6s cubic-bezier(0.16,1,0.3,1);margin-bottom:4px}
+.hero-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(27,61,32,0.05)}
+.hero-card::before{content:'';position:absolute;top:-40%;right:-20%;width:160px;height:160px;background:radial-gradient(circle,rgba(76,175,80,0.06),transparent 70%);border-radius:50%}
+.hero-card::after{content:'';position:absolute;bottom:-30%;left:-10%;width:120px;height:120px;background:radial-gradient(circle,rgba(139,175,143,0.05),transparent 70%);border-radius:50%}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-pale);border:1px solid rgba(45,122,58,0.12);padding:4px 12px;border-radius:20px;font-size:11px;color:var(--green);font-weight:600;letter-spacing:0.5px;margin-bottom:14px;position:relative;z-index:1}
+.hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--green-soft)}
+.hero h2{font-family:'Playfair Display',serif;color:var(--dark);font-size:22px;font-weight:600;line-height:1.3;margin-bottom:8px;position:relative;z-index:1}
+.hero h2 em{color:var(--green);font-style:normal}
+.hero p{color:var(--text2);font-size:13.5px;line-height:1.6;position:relative;z-index:1}
+.hero-contact{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:5px;background:var(--green-pale);border:1px solid rgba(45,122,58,0.1);padding:4px 10px;border-radius:8px;font-size:11px;color:var(--green);text-decoration:none;transition:all 0.2s;font-weight:500}
+.hero-tag:hover{background:var(--green);color:var(--white)}.hero-tag span{font-size:13px}
+
+.hero-cta{display:flex;gap:8px;margin-top:16px;position:relative;z-index:1}
+.hero-cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;flex:1;padding:12px 16px;border-radius:10px;font-size:13.5px;font-weight:600;font-family:'Outfit',sans-serif;text-decoration:none;transition:all 0.25s}
+.hero-cta-btn:active{transform:scale(0.98)}
+.hero-wa{background:#25D366;color:var(--white);box-shadow:0 3px 12px rgba(37,211,102,0.2)}
+.hero-wa:hover{box-shadow:0 4px 20px rgba(37,211,102,0.3);transform:translateY(-1px)}
+.hero-wa svg{width:18px;height:18px;fill:var(--white);flex-shrink:0}
+.hero-call{background:var(--green-pale);color:var(--green);border:1.5px solid rgba(45,122,58,0.15)}
+.hero-call:hover{background:var(--green);color:var(--white);transform:translateY(-1px)}
+
+.done-cta{display:flex;gap:8px;margin-top:14px}
+.done-cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;flex:1;padding:11px 14px;border-radius:10px;font-size:13px;font-weight:600;font-family:'Outfit',sans-serif;text-decoration:none;transition:all 0.25s}
+.done-cta-wa{background:#25D366;color:var(--white);box-shadow:0 2px 8px rgba(37,211,102,0.15)}
+.done-cta-wa:hover{box-shadow:0 4px 16px rgba(37,211,102,0.25);transform:translateY(-1px)}
+.done-cta-wa svg{width:16px;height:16px;fill:var(--white);flex-shrink:0}
+.done-cta-call{background:var(--green-pale);color:var(--green);border:1.5px solid rgba(45,122,58,0.12)}
+.done-cta-call:hover{background:var(--green);color:var(--white)}
+
+@keyframes optPulse{0%{box-shadow:0 0 0 0 rgba(45,122,58,0.15)}70%{box-shadow:0 0 0 6px rgba(45,122,58,0)}100%{box-shadow:0 0 0 0 rgba(45,122,58,0)}}
+.opt{animation:optPulse 1.5s ease-out 0.5s 1}
+.opt:nth-child(2){animation-delay:0.65s}
+.opt:nth-child(3){animation-delay:0.8s}
+.opt:nth-child(4){animation-delay:0.95s}
+.opt:nth-child(5){animation-delay:1.1s}
+
+@media(max-width:480px){body{padding:0;align-items:stretch}.phone{max-width:100%;height:100vh;max-height:100vh;border-radius:0}}
+</style>
+</head>
+<body>
+<div class="phone">
+<div class="hdr">
+  <div class="logo"><span>180°</span></div>
+  <div class="hdr-info">
+    <div class="hdr-name">180° Healthy Meals</div>
+    <div class="hdr-sub"><span class="hdr-dot"></span>Online — replies instantly</div>
+  </div>
+</div>
+<div class="chat" id="chat"></div>
+<div class="inarea">
+  <input type="text" class="tinput" id="ti" placeholder="Type your message..." disabled>
+  <button class="sbtn" id="sb" disabled><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+</div>
+</div>
+<script>
+const chat=document.getElementById('chat'),ti=document.getElementById('ti'),sb=document.getElementById('sb');
+const WEBHOOK_URL='https://hook.eu1.make.com/lkniseg7wzcbft2bhewsbp8zey7n9et4';
+const ld={name:'',phone:'',goal:'',plan:'',budget:'',language:'',timestamp:''};
+let step=0,lang='en';
+
+const C={
+  en:{
+    heroTitle:'Your Journey to a <em>Healthier You</em>',
+    heroText:'Answer a few quick questions and our nutritionist will craft a personalized meal plan just for you.',
+    langOpts:[{t:'English',i:'🇬🇧'},{t:'العربية',i:'🇦🇪'}],
+    goalAsk:"What's your health goal?",
+    goals:[{t:'Weight Loss',i:'🎯'},{t:'Muscle Gain / Bulking',i:'💪'},{t:'Maintain & Stay Healthy',i:'🌿'},{t:'Improve Energy & Performance',i:'⚡'}],
+    planAsk:"What type of meal plan interests you?",
+    plans:[{t:'Full Day (Breakfast + Lunch + Dinner)',i:'🍽️'},{t:'Lunch & Dinner Only',i:'🥗'},{t:'Custom Plan — Specific needs',i:'✨'}],
+    budgetAsk:"What's your weekly budget range?",
+    budgets:[{t:'Under AED 400/week',i:'💚'},{t:'AED 400–600/week',i:'💚'},{t:'AED 600–800/week',i:'💚'},{t:'AED 800+/week',i:'💚'},{t:'Not sure — help me choose',i:'🤔'}],
+    nameAsk:"Great choices! What's your name so our nutritionist can reach you?",
+    namePh:"Your name...",
+    phoneAsk:n=>`Thanks ${n}! What's the best number to reach you on?`,
+    phonePh:"Your phone number...",
+    summaryTitle:"Here's your enquiry:",
+    doneTitle:n=>`You're all set, ${n}!`,
+    doneText:g=>`A 180° nutritionist will reach out within 2 hours to discuss your ${g.toLowerCase()} plan. We're excited to help transform your health!`,
+    labels:{g:'Goal',p:'Plan',b:'Budget',n:'Name',ph:'Phone'}
+  },
+  ar:{
+    heroTitle:'رحلتك نحو <em>صحة أفضل</em>',
+    heroText:'أجب على بعض الأسئلة السريعة وسيقوم أخصائي التغذية بإنشاء خطة مخصصة لك.',
+    langOpts:[{t:'English',i:'🇬🇧'},{t:'العربية',i:'🇦🇪'}],
+    goalAsk:"ما هو هدفك الصحي؟",
+    goals:[{t:'إنقاص الوزن',i:'🎯'},{t:'بناء العضلات',i:'💪'},{t:'الحفاظ على الصحة',i:'🌿'},{t:'تحسين الطاقة والأداء',i:'⚡'}],
+    planAsk:"ما نوع خطة الوجبات التي تهمك؟",
+    plans:[{t:'يوم كامل (فطور + غداء + عشاء)',i:'🍽️'},{t:'غداء وعشاء فقط',i:'🥗'},{t:'خطة مخصصة',i:'✨'}],
+    budgetAsk:"ما هي ميزانيتك الأسبوعية؟",
+    budgets:[{t:'أقل من ٤٠٠ درهم/أسبوع',i:'💚'},{t:'٤٠٠–٦٠٠ درهم/أسبوع',i:'💚'},{t:'٦٠٠–٨٠٠ درهم/أسبوع',i:'💚'},{t:'أكثر من ٨٠٠ درهم/أسبوع',i:'💚'},{t:'غير متأكد — ساعدني',i:'🤔'}],
+    nameAsk:"ممتاز! ما اسمك حتى يتواصل معك أخصائي التغذية؟",
+    namePh:"...اسمك",
+    phoneAsk:n=>`شكراً ${n}! ما أفضل رقم للتواصل معك؟`,
+    phonePh:"...رقم هاتفك",
+    summaryTitle:"ملخص استفسارك:",
+    doneTitle:n=>`!تم بنجاح ${n}`,
+    doneText:g=>`سيتواصل معك أخصائي تغذية من 180° خلال ساعتين لمناقشة خطتك. نتطلع لمساعدتك!`,
+    labels:{g:'الهدف',p:'الخطة',b:'الميزانية',n:'الاسم',ph:'الهاتف'}
+  }
+};
+
+function gt(){return new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true})}
+function addDiv(){const d=document.createElement('div');d.className='divider';d.innerHTML=`<span>${new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})}</span>`;chat.appendChild(d)}
+
+function addHero(){
+  const h=document.createElement('div');h.className='hero';
+  h.innerHTML=`<div class="hero-card">
+    <div class="hero-badge"><span class="dot"></span>MEAL PLAN ASSISTANT</div>
+    <h2>${C.en.heroTitle}</h2>
+    <p>${C.en.heroText}</p>
+    <div class="hero-contact">
+      <a href="https://instagram.com/180degreeae" target="_blank" class="hero-tag"><span>📸</span>@180degreeae</a>
+      <a href="mailto:manager@180degree.ae" class="hero-tag"><span>✉️</span>Email us</a>
+    </div>
+    <div class="hero-cta">
+      <a href="https://wa.me/971507779295" target="_blank" class="hero-cta-btn hero-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.575-1.456A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.803-6.275-2.152l-.438-.352-2.706.862.88-2.634-.381-.461A9.948 9.948 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>WhatsApp</a>
+      <a href="tel:+971507779295" class="hero-cta-btn hero-call">📞 Call Now</a>
+    </div>
+  </div>`;
+  chat.appendChild(h);ss();
+}
+
+function ai(t,r=false){const m=document.createElement('div');m.className=`msg in${r?' rtl':''}`;m.innerHTML=`${t}<div class="time">${gt()}</div>`;chat.appendChild(m);ss()}
+function ao(t,r=false){const m=document.createElement('div');m.className=`msg out${r?' rtl':''}`;m.innerHTML=`${t}<div class="time">${gt()}</div>`;chat.appendChild(m);ss()}
+function st(){const t=document.createElement('div');t.className='typing';t.id='typ';t.innerHTML='<div class="td"></div><div class="td"></div><div class="td"></div>';chat.appendChild(t);ss()}
+function rt(){const e=document.getElementById('typ');if(e)e.remove()}
+function so(opts,r=false){const c=document.createElement('div');c.className=`opts${r?' rtl':''}`;c.id='co';opts.forEach(o=>{const b=document.createElement('button');b.className=`opt${r?' rtl':''}`;b.innerHTML=`<span class="opt-icon">${o.i||''}</span><span class="opt-text">${o.t}</span>`;b.addEventListener('click',()=>hc(o.t));c.appendChild(b)});chat.appendChild(c);ss()}
+function ro(){const e=document.getElementById('co');if(e)e.remove()}
+function ei(p,r=false){ti.disabled=false;sb.disabled=false;ti.placeholder=p||'Type...';if(r)ti.classList.add('rtl');else ti.classList.remove('rtl');setTimeout(()=>ti.focus(),100)}
+function di(){ti.disabled=true;sb.disabled=true;ti.classList.remove('rtl')}
+function ss(){setTimeout(()=>{chat.scrollTop=chat.scrollHeight},60)}
+function br(t,d=1200,r=false){return new Promise(res=>{st();setTimeout(()=>{rt();ai(t,r);res()},d)})}
+
+function showDone(){
+  const r=lang==='ar';const t=C[lang];
+  const c=document.createElement('div');c.className=`done${r?' rtl':''}`;
+  c.innerHTML=`<span class="done-icon">🥗</span>
+    <h3>${t.doneTitle(ld.name)}</h3>
+    <p>${t.doneText(ld.goal)}</p>
+    <div class="done-contact">
+      <a href="https://instagram.com/180degreeae" target="_blank"><span>📸</span>@180degreeae</a>
+      <a href="https://maps.google.com/?q=Powerfit+Gym+Nadd+Al+Hamar+Dubai" target="_blank"><span>📍</span>Powerfit Gym, Nadd Al Hamar, Dubai</a>
+    </div>
+    <div class="done-cta">
+      <a href="https://wa.me/971507779295" target="_blank" class="done-cta-btn done-cta-wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.616l4.575-1.456A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.803-6.275-2.152l-.438-.352-2.706.862.88-2.634-.381-.461A9.948 9.948 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>WhatsApp</a>
+      <a href="tel:+971507779295" class="done-cta-btn done-cta-call">📞 Call</a>
+    </div>`;
+  chat.appendChild(c);ss();
+}
+
+async function sendWebhook(){
+  ld.timestamp=new Date().toISOString();ld.language=lang==='ar'?'Arabic':'English';
+  try{await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(ld)})}catch(e){console.log('Demo:',ld)}
+}
+
+async function hc(o){
+  ro();const r=lang==='ar';ao(o,r);
+  switch(step){
+    case 0:if(o==='العربية')lang='ar';else lang='en';const t2=C[lang];const r2=lang==='ar';step=1;await br(t2.goalAsk,1000,r2);so(t2.goals,r2);break;
+    case 1:ld.goal=o;step=2;await br(C[lang].planAsk,1000,r);so(C[lang].plans,r);break;
+    case 2:ld.plan=o;step=3;await br(C[lang].budgetAsk,1000,r);so(C[lang].budgets,r);break;
+    case 3:ld.budget=o;step=4;await br(C[lang].nameAsk,1000,r);ei(C[lang].namePh,r);break;
+  }
+}
+
+async function hs(){
+  const v=ti.value.trim();if(!v)return;ti.value='';const r=lang==='ar';const t=C[lang];ao(v,r);di();
+  switch(step){
+    case 4:ld.name=v;step=5;await br(t.phoneAsk(v),1200,r);ei(t.phonePh,r);break;
+    case 5:
+      ld.phone=v;step=6;await sendWebhook();
+      const lb=t.labels;
+      const sm=`📋 <b>${t.summaryTitle}</b><br><br><b>${lb.g}:</b> ${ld.goal}<br><b>${lb.p}:</b> ${ld.plan}<br><b>${lb.b}:</b> ${ld.budget}<br><b>${lb.n}:</b> ${ld.name}<br><b>${lb.ph}:</b> ${ld.phone}`;
+      await br(sm,1500,r);showDone();break;
+  }
+}
+
+sb.addEventListener('click',hs);ti.addEventListener('keydown',e=>{if(e.key==='Enter')hs()});
+
+async function init(){
+  addDiv();await new Promise(r=>setTimeout(r,400));addHero();await new Promise(r=>setTimeout(r,800));
+  await br("Welcome to 180° Healthy Meals 🥗<br><span style='font-family:Noto Sans Arabic;direction:rtl'>أهلاً بك في 180° للوجبات الصحية</span>",1000);
+  await br("Choose your language / اختر لغتك",800);
+  step=0;so(C.en.langOpts);
+}
+init();
+</script>
+</body>
+</html>
